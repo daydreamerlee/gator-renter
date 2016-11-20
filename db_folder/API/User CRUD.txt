@@ -1,0 +1,35 @@
+http://localhost/University/gator-renter/api/users?id=234   DELETE / GET (specific user)
+
+http://localhost/University/gator-renter/api/users  GET (list of all users)
+
+
+--------------------------------- ADD USER ---------------------------------
+
+http://localhost/University/gator-renter/api/users - POST
+
+HEADER -> Content-Type: application/json
+
+Request: 
+{
+   "first_name" : "Intesar",
+   "last_name" : "Haider",
+   "email" : "intesar.haider+d1@gmail.com",
+   "password" : "myPasswWoRd",
+   "address" : "Wusenmulhen, Germany",
+   "city" : "Fulda",
+   "role_type_id" : "2" //see db table for details
+}
+
+Respose:
+{
+  "success": true,
+  "data": {
+    "first_name": "Intesar",
+    "last_name": "Haider",
+    "email": "intesar.haider+d1@gmail.com",
+    "address": "Wusenmulhen, Germany",
+    "city": "Fulda",
+    "role_type_id": "2"
+  }
+}
+--------------------------------- --- ---------------------------------

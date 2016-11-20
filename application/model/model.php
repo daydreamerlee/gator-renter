@@ -66,4 +66,25 @@ class Model
         // fetch() is the PDO method that get exactly one result
         return $query->fetch()->amount_of_apartments;
     }
+
+    // saving new user in the database
+    public function saveNewUser($data) {
+
+        $sql = "INSERT INTO users (first_name, last_name, email, password, address, city, created, user_roles_id, is_active) " .
+                " VALUES (:first_name, :last_name, :email, :password, :address, :city, :creationDate, :userRoleId, :isActive)";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':first_name' => $data['first_name'],
+                            ':last_name' => $data['last_name'],
+                            ':email' => $data['email'],
+                            ':password' => $data['password'],
+                            ':address' => $data['address'],
+                            ':city' => $data['city'],
+                            ':creationDate' => Helper::getCurrentMySQLFormatTime(),
+                            ':userRoleId' => $data['role_type_id'],
+                            ':isActive' => 1 );
+
+        $status = $query->execute($parameters);
+        return $status;
+
+    }
 }

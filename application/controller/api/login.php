@@ -15,6 +15,15 @@ class Login extends Controller
 
     public function index()
     {
+
+
+
+        // Hashing the password with its hash as the salt returns the same hash
+//        if ( hash_equals($hash, crypt($requestPayload['password'], $hash)) ) {
+//            echo "PASSWORD CORRECT !!!";
+//        }
+
+
         if (!isset($_SESSION)) {
             session_start();
         }
