@@ -68,7 +68,14 @@ class Model
      */
     public function getUserInfoById($userId)
     {
-        $sql = "SELECT * FROM users WHERE uid = :uid LIMIT 1";
+        if($userId == null)
+        {
+            $sql = "CALL getUserDetail(null);";
+        }
+        else
+        {
+            $sql = "CALL getUserDetail(" + $userId +");";
+        }
         $query = $this->db->prepare($sql);
         $parameters = array(':uid' => $userId);
 

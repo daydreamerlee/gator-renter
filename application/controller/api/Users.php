@@ -73,11 +73,11 @@ class Users extends AbstractAPI  {
     public function getUserDetail() {
 
         if(is_null($this->requestData)) { //get all the users
-            echo "Hello from getUserDetail (get all the users)";
-        } else {
-            echo "Hello from getUserDetail (get specific user)";
+            $apts = $this->model->getUserInfoById(null);
+        } else { // get user by user id
+            $apts = $this->model->getUserInfoById($this->requestData['userID']);
         }
-
+        echo json_encode($apts);
     }
 
     /**
