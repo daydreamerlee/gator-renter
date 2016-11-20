@@ -44,6 +44,21 @@ class Model
         return $query->fetch();
     }
 
+    /**
+     * Get a user information from database by user email address
+     */
+    public function getUserInfoById($userId)
+    {
+        $sql = "SELECT * FROM users WHERE uid = :uid LIMIT 1";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':uid' => $userId);
+
+        $query->execute($parameters);
+
+        // fetch() is the PDO method that get exactly one result
+        return $query->fetch();
+    }
+
     public function getApartment($apartment_id)
     {
         $sql = "SELECT * FROM apartments WHERE id = :apartment_id";
@@ -85,6 +100,17 @@ class Model
 
         $status = $query->execute($parameters);
         return $status;
+
+    }
+
+    //DELETE a user, it's a soft delete
+    public function deleteUser($userId) {
+
+        $sql = "UPDATE `users` SET `is_active`='0' WHERE `uid`= :userId ";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':userId' => $userId);
+
+        return $query->execute($parameters);
 
     }
 }

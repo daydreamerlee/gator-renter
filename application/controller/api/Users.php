@@ -42,7 +42,6 @@ class Users extends AbstractAPI  {
         $userInfo = $this->model->getUserInfo($requestPayload['email']);
         if (isset($userInfo) && $userInfo != false) {
             AbstractApi::_response('User with same email already exist', 500);
-            return;
         }
 
         // password encryption logic
@@ -88,6 +87,19 @@ class Users extends AbstractAPI  {
 
         //if user id, that's need to be deleted is missing, show error
         if(is_null($this->requestData)) $this->_response('Invalid Request! User ID to delete is missing', 400);
+
+        //finding user with the ID
+        $userInfo = $this->model->getUserInfoById($this->requestData);
+        if (!isset($userInfo) || $userInfo == false) {
+            AbstractApi::_response("User with ID [$this->requestData] does not exist", 500);
+            return;
+        }
+
+        $status = $this->model->deleteUser($this->requestData);
+
+        if($status==true) {
+            AbstractApi::_response("User with ID = $this->requestData successfully deleted!");
+        }
 
     }
 }
