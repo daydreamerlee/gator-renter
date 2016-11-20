@@ -13,11 +13,7 @@ class Model
             exit('Database connection could not be established.');
         }
     }
-
-
-    /**
-     * Get all apartments from db
-     */
+    
     public function getAllApartments()
     {
         $sql = "SELECT * FROM apartments";
@@ -37,21 +33,6 @@ class Model
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
-        $query->execute($parameters);
-
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
-    }
-
-    /**
-     * Get a user information from database by user email address
-     */
-    public function getUserInfoById($userId)
-    {
-        $sql = "SELECT * FROM users WHERE uid = :uid LIMIT 1";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':uid' => $userId);
 
         $query->execute($parameters);
 
@@ -82,21 +63,36 @@ class Model
         return $query->fetch()->amount_of_apartments;
     }
 
+    /**
+     * Get a user information from database by user email address
+     */
+    public function getUserInfoById($userId)
+    {
+        $sql = "SELECT * FROM users WHERE uid = :uid LIMIT 1";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':uid' => $userId);
+
+        $query->execute($parameters);
+
+        // fetch() is the PDO method that get exactly one result
+        return $query->fetch();
+    }
+
     // saving new user in the database
     public function saveNewUser($data) {
 
         $sql = "INSERT INTO users (first_name, last_name, email, password, address, city, created, user_roles_id, is_active) " .
-                " VALUES (:first_name, :last_name, :email, :password, :address, :city, :creationDate, :userRoleId, :isActive)";
+            " VALUES (:first_name, :last_name, :email, :password, :address, :city, :creationDate, :userRoleId, :isActive)";
         $query = $this->db->prepare($sql);
         $parameters = array(':first_name' => $data['first_name'],
-                            ':last_name' => $data['last_name'],
-                            ':email' => $data['email'],
-                            ':password' => $data['password'],
-                            ':address' => $data['address'],
-                            ':city' => $data['city'],
-                            ':creationDate' => Helper::getCurrentMySQLFormatTime(),
-                            ':userRoleId' => $data['role_type_id'],
-                            ':isActive' => 1 );
+            ':last_name' => $data['last_name'],
+            ':email' => $data['email'],
+            ':password' => $data['password'],
+            ':address' => $data['address'],
+            ':city' => $data['city'],
+            ':creationDate' => Helper::getCurrentMySQLFormatTime(),
+            ':userRoleId' => $data['role_type_id'],
+            ':isActive' => 1 );
 
         $status = $query->execute($parameters);
         return $status;
