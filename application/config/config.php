@@ -63,8 +63,8 @@ if($_SERVER['HTTP_HOST'] == 'localhost') {
 } else {
     define('DB_TYPE', 'mysql');
     define('DB_HOST', '127.0.0.1');
-    define('DB_NAME', 'f16g08');
-    define('DB_USER', 'f16g08');
+    define('DB_NAME', 'student_intesar_haider');
+    define('DB_USER', 'intesar_haider');
     define('DB_PASS', 'sfsuf16swe');
     define('DB_CHARSET', 'utf8');
 }
