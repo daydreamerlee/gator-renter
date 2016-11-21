@@ -61,10 +61,15 @@ class Users extends AbstractAPI  {
      */
     public function updateUser() {
 
-        //$this->requestData['userID']   ---   this user needs to be updated and all the data will be in requestData array
-
-        echo "Hello from updateUser";
-
+        $requestPayload = $this->requestData;
+        
+        $status = $this->model->updateUser($requestPayload);
+        
+        if($status==true) {
+            AbstractApi::_response($requestPayload);
+        } else {
+            AbstractApi::_response("Something unexpected happened", 500);
+        }
     }
 
     /**

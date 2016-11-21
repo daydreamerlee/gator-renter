@@ -105,6 +105,18 @@ class Model
         return $status;
 
     }
+    
+    // update user in the database
+    public function updateUser($data) {
+
+        $sql = "CALL updateUserDetail(" + $data['email'] + "," + $data['first_name'] + "," + $data['last_name'] + "," + $data['address'] 
+                + "," + $data['city'] +")";
+        $query = $this->db->prepare($sql);
+
+        $status = $query->execute($sql);
+        return $status;
+
+    }
 
     //DELETE a user, it's a soft delete
     public function deleteUser($userId) {
