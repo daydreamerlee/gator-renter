@@ -60,7 +60,28 @@ app.controller('homeController', ['$location', '$scope', '$rootScope', 'Apartmen
 	};
 
 	$rootScope.signup = function() {
-		// signup the user with $rootScope.username and $rootScope.password
+		$("#showUserName").text($rootScope.first_name + " " + $rootScope.last_name );
+		$rootScope.showLoginLink = false;
+		$rootScope.showSigninLink = false;
+		$rootScope.showUserName = true;
+		$rootScope.showSignup = false;
+
+		$.ajax({
+			method: "POST",
+			dataType : "json",
+			url: "api/Users",
+			data: {
+				first_name : $rootScope.first_name,
+				last_name: $rootScope.last_name,
+				email : $rootScope.username,
+				password : $rootScope.password,
+				address : $rootScope.address,
+				city : "Fulda",
+				role_type_id : "2"
+			}
+		}).always(function (result) {
+			console.log(result);
+		});
 	};
 
 	$scope.update = function() {

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'AbstractAPI.php';
+require_once APP . 'controller/api/AbstractApi.php';
 /**
  * Created by Intesar Haider.
  * This class will strictly be used for USER specific CRUD
