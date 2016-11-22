@@ -7,6 +7,7 @@
   <title>Gator Renter</title>
   <link rel="stylesheet" href="<?php echo URL; ?>css/style.css">
   <link rel="stylesheet" href="<?php echo URL; ?>css/buttons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
   <main class="flex column" ng-view></main>

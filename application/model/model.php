@@ -74,15 +74,15 @@ class Model
         }
         else
         {
-            $sql = "CALL getUserDetail(" + $userId +");";
+            $sql = "CALL getUserDetail(\" $userId \");";
         }
+        
         $query = $this->db->prepare($sql);
-        $parameters = array(':uid' => $userId);
 
-        $query->execute($parameters);
+        $query->execute();
 
         // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
+        return $query->fetchall();
     }
 
     // saving new user in the database

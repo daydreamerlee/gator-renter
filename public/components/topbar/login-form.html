@@ -5,6 +5,7 @@
 		<input class="box" type="text" ng-model="$root.username" placeholder="your@email.com" />
 		<label>Password</label>
 		<input class="box" type="password" ng-model="$root.password" />
+		<span ng-show="$root.errorMessage" style="color:red">Username or password incorrect!!</span>
 		<a ng-click="$root.login()" class="button green large">Log in</a>
 	</div>
 </div>

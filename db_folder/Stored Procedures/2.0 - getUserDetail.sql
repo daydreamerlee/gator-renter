@@ -3,12 +3,12 @@ DROP procedure IF EXISTS `getUserDetail`;
 
 DELIMITER $$
 USE `mini`$$
-CREATE PROCEDURE `getUserDetail` (in uid varchar(25))
+CREATE PROCEDURE `getUserDetail` (in userid varchar(25))
 BEGIN
-IF uid IS NULL THEN 
-      Select * from users;
+IF userid IS NULL THEN 
+      Select * from users where is_active <> 0;
    ELSE
-      Select * from users where uid = null;
+      Select * from users where uid = userid and is_active <> 0;
    END IF;
 END$$
 

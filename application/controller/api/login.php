@@ -15,15 +15,6 @@ class Login extends Controller
 
     public function index()
     {
-
-
-
-        // Hashing the password with its hash as the salt returns the same hash
-//        if ( hash_equals($hash, crypt($requestPayload['password'], $hash)) ) {
-//            echo "PASSWORD CORRECT !!!";
-//        }
-
-
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -37,13 +28,12 @@ class Login extends Controller
             return;
         }
 
-
-        if ($user_info->password == $password) {
+        if ( hash_equals($user_info->password, crypt($password, $user_info->password)) ) {
             $_SESSION['user_name'] = $email;
             $_SESSION['password'] = $password;
             $_SESSION['authentic_user'] = true;
-            echo json_encode(array('valid_username' => true, 'valid_password' => true, 'authentic_user' => true));
-//            echo json_encode($_SESSION);
+            //echo json_encode(array('valid_username' => true, 'valid_password' => true, 'authentic_user' => true));
+            echo json_encode($user_info);
         } else {
             echo json_encode(array('valid_username' => true, 'valid_password' => false, 'authentic_user' => false));
         }
