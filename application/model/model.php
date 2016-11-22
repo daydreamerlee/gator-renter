@@ -82,7 +82,7 @@ class Model
         $query->execute($parameters);
 
         // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
+        return $query->fetchall();
     }
 
     // saving new user in the database
