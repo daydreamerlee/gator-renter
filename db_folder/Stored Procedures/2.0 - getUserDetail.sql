@@ -8,7 +8,7 @@ BEGIN
 IF userid IS NULL THEN 
       Select * from users;
    ELSE
-      Select * from users where uid = userid;
+      Select * from users where uid = userid and is_active <> 0;
    END IF;
 END$$
 
