@@ -66,22 +66,20 @@ app.controller('homeController', ['$location', '$scope', '$rootScope', 'Apartmen
 		$rootScope.showUserName = true;
 		$rootScope.showSignup = false;
 
-		$.ajax({
-			method: "POST",
-			dataType : "json",
-			url: "api/Users",
-			data: {
-				first_name : $rootScope.first_name,
-				last_name: $rootScope.last_name,
-				email : $rootScope.username,
-				password : $rootScope.password,
-				address : $rootScope.address,
-				city : "Fulda",
-				role_type_id : "2"
-			}
-		}).always(function (result) {
-			console.log(result);
-		});
+		var user_data = {
+			first_name:$rootScope.first_name,
+			last_name:$rootScope.last_name,
+			email:$rootScope.username,
+			password : $rootScope.password,
+			address : $rootScope.address,
+			city : "Fulda",
+			role_type_id : "2"
+		};
+
+		var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+		xmlhttp.open("POST", "api/Users");
+		xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		xmlhttp.send(JSON.stringify(user_data));
 	};
 
 	$scope.update = function() {
