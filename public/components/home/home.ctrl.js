@@ -8,6 +8,11 @@ app.controller('homeController', ['$location', '$scope', '$rootScope', 'Apartmen
 	$rootScope.showLogin = false;
 	$rootScope.showSignup = false;
 
+	$rootScope.showLoginLink = true;
+	$rootScope.showSigninLink = true;
+	$rootScope.showUserName = false;
+	$rootScope.errorMessage = false;
+
 	$scope.propertyName = 'title';
 	$scope.reverse = true;
 
@@ -23,6 +28,35 @@ app.controller('homeController', ['$location', '$scope', '$rootScope', 'Apartmen
 
 	$rootScope.login = function() {
 		// login the user with $rootScope.username and $rootScope.password
+		$.ajax({
+			method: "GET",
+			dataType : "json",
+			url: "api/login",
+			data: {
+				loginname : $rootScope.username,
+				password: $rootScope.password
+			}
+		}).always(function (result) {
+			if (result.first_name) {
+				$("#showUserName").text(result.first_name + " " + result.last_name);
+				$rootScope.showLoginLink = false;
+				$rootScope.showSigninLink = false;
+				$rootScope.showUserName = true;
+				$rootScope.showLogin = false;
+				$rootScope.errorMessage = false;
+			}
+			else {
+				$rootScope.errorMessage = true;
+			}
+		});
+	};
+
+	$rootScope.logout = function() {
+		if (confirm("Do you want to log out?")) {
+			$rootScope.showLoginLink = true;
+			$rootScope.showSigninLink = true;
+			$rootScope.showUserName = false;
+		}
 	};
 
 	$rootScope.signup = function() {

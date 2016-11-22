@@ -32,8 +32,8 @@ class Login extends Controller
             $_SESSION['user_name'] = $email;
             $_SESSION['password'] = $password;
             $_SESSION['authentic_user'] = true;
-            echo json_encode(array('valid_username' => true, 'valid_password' => true, 'authentic_user' => true));
-//            echo json_encode($_SESSION);
+            //echo json_encode(array('valid_username' => true, 'valid_password' => true, 'authentic_user' => true));
+            echo json_encode($user_info);
         } else {
             echo json_encode(array('valid_username' => true, 'valid_password' => false, 'authentic_user' => false));
         }
