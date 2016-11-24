@@ -1,7 +1,56 @@
 http://localhost/University/gator-renter/api/users?id=234   DELETE / GET (specific user)
 
+--------------------------------- GET USER(S) BY ID ---------------------------------
+
+Request: 
+
 http://localhost/University/gator-renter/api/users  GET (list of all users)
 
+Response:
+
+[
+  {
+    "uid": "169",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "swadesh@gmail.com",
+    "password": "1234567890",
+    "address": "4092 Furth Circle",
+    "city": "Singapore",
+    "created": "2014-08-31 18:21:20",
+    "user_roles_id": null,
+    "is_active": "1"
+  },
+  {
+    "uid": "193",
+    "first_name": "Anil",
+    "last_name": "Manzoor",
+    "email": "intesar.haidefgdfg@gmail.com",
+    "address": "Wusenmulhen, Germany",
+    "city": "Fulda",
+    "created": "2016-11-20 06:36:02",
+    "user_roles_id": "1",
+    "is_active": "1"
+  }
+]
+
+http://localhost/University/gator-renter/api/users?id=193  GET (user by id)
+
+Respose:
+[  
+  {
+    "uid": "193",
+    "first_name": "Anil",
+    "last_name": "Manzoor",
+    "email": "intesar.haidefgdfg@gmail.com",
+    "address": "Wusenmulhen, Germany",
+    "city": "Fulda",
+    "created": "2016-11-20 06:36:02",
+    "user_roles_id": "1",
+    "is_active": "1"
+  }
+]
+--------------------------------- --- ---------------------------------
 
 --------------------------------- ADD USER ---------------------------------
 
