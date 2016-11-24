@@ -1,8 +1,6 @@
-USE `mini`;
 DROP procedure IF EXISTS `getMessages`;
 
 DELIMITER $$
-USE `mini`$$
 CREATE PROCEDURE `getMessages` 
 (in email varchar(50), 
  in apartment_id int, 
