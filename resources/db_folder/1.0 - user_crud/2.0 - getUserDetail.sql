@@ -1,8 +1,6 @@
-USE `mini`;
 DROP procedure IF EXISTS `getUserDetail`;
 
 DELIMITER $$
-USE `mini`$$
 CREATE PROCEDURE `getUserDetail` (in userid varchar(25))
 BEGIN
 IF userid IS NULL THEN 

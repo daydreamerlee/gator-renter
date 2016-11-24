@@ -1,8 +1,6 @@
-USE `mini`;
 DROP procedure IF EXISTS `updateUserDetail`;
 
 DELIMITER $$
-USE `mini`$$
 CREATE PROCEDURE `updateUserDetail` (in email varchar(50), in first_name varchar(255), 
 in last_name varchar(255), in address varchar(50), in city varchar(50))
 BEGIN
