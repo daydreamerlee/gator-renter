@@ -1,10 +1,12 @@
-http://localhost/University/gator-renter/api/users?id=234   DELETE / GET (specific user)
+--------------------------------- Delete USER(S) BY ID ---------------------------------
 
---------------------------------- GET USER(S) BY ID ---------------------------------
+/api/users?id=234   DELETE  (specific user)
 
-Request: 
+--------------------------------- GET USER(S)  ---------------------------------
 
-http://localhost/University/gator-renter/api/users  GET (list of all users)
+Request ALL USERS: 
+
+/api/users  GET (list of all users)
 
 Response:
 
@@ -34,7 +36,10 @@ Response:
   }
 ]
 
-http://localhost/University/gator-renter/api/users?id=193  GET (user by id)
+
+Request ALL USERS: 
+
+/api/users?id=193  GET (user by id)
 
 Respose:
 [  
@@ -50,11 +55,10 @@ Respose:
     "is_active": "1"
   }
 ]
---------------------------------- --- ---------------------------------
 
 --------------------------------- ADD USER ---------------------------------
 
-http://localhost/University/gator-renter/api/users - POST
+/api/users - POST
 
 HEADER -> Content-Type: application/json
 
